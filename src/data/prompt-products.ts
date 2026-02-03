@@ -671,44 +671,38 @@ Write a paragraph I can paste into an AI image generator (like Midjourney) or a 
     },
     {
         id: 'image-architect-001',
-        title: 'AI Image Prompt Builder',
-        titleTr: 'Yapay Zeka Görsel Prompt Oluşturucu',
-        titleDe: 'KI-Bild-Prompt-Generator',
+        title: 'Cinematic Narrative Builder',
+        titleTr: 'Sinematik Anlatı Oluşturucu',
+        titleDe: 'Cinematic Narrative Builder',
         category: 'image',
-        preview: 'Act as a Lead Generative Art Director. Deconstruct vague ideas into high-fidelity Scene State JSON objects with physics, optics, and color grading specs.',
-        previewTr: 'Bir Sanat Yönetmeni gibi davranın. Belirsiz fikirleri fizik, optik ve renk derecelendirme özelliklerine sahip JSON nesnelerine dönüştürün.',
-        previewDe: 'Handeln Sie als Generative Art Director. Zerlegen Sie Ideen in hochauflösende JSN-Szenenbeschreibungen mit Physik und Optik.',
-        fullPrompt: `### SYSTEM INSTRUCTION: LEAD GENERATIVE ART DIRECTOR ###
+        preview: 'Transform raw ideas into high-fidelity "Director\'s Briefs." Move from technical specs to sensory, atmospheric storytelling optimized for 2026 image models.',
+        previewTr: 'Ham fikirleri yüksek kaliteli "Yönetmen Notları"na dönüştürün. Teknik özelliklerden 2026 görsel modelleri için optimize edilmiş duyusal ve atmosferik hikayelere geçin.',
+        previewDe: 'Verwandeln Sie rohe Ideen in hochauflösende „Director’s Briefs“. Wechseln Sie von technischen Spezifikationen zu atmosphärischem Storytelling.',
+        fullPrompt: `### SYSTEM INSTRUCTION: CINEMATIC ART DIRECTOR ###
 
 **Role:**
-Act as a Lead Generative Art Director with deep expertise in "Universal Image Synthesis" (Photography, 3D Rendering, & Art History).
-I will provide a raw concept. Your goal is to deconstruct it into a "Scene State" JSON object.
+Act as a world-class Art Director and Director of Photography. Your goal is to transform raw ideas into "High-Fidelity Narrative Briefs" for advanced image synthesis (Flux.1, Midjourney v6).
 
 **Input Concept:**
-[INSERT RAW IDEA - e.g., "A cyberpunk samurai cat"]
+[INSERT RAW IDEA]
 
-**Your Process:**
-1.  **Analyze Subject:** Define the core focal point, pose, and expression.
-2.  **Define Physics:** Establish the lighting model, material textures, and camera optics (Lens/Sensor).
-3.  **Select Medium:** Choose the aesthetic engine (e.g., Analog Film, Unreal Engine 5, Impasto Oil).
-4.  **Structure:** Output the result as a valid JSON object.
+**Your Task:**
+Write a single, dense, evocative paragraph (100-150 words) that describes the scene as if you are looking through the lens.
 
-**Output Format (JSON):**
-{
-  "subject_anchor": "Detailed description of the main subject (pose, expression, clothing)",
-  "medium_&_style": "The specific art medium (e.g., 'Fujifilm Superia 400', 'Octane Render', 'Gouache Painting')",
-  "environment_&_atmosphere": "Background details, weather, and atmospheric depth (e.g., 'Volumetric fog', 'Neon rain')",
-  "lighting_model": "The specific lighting setup (e.g., 'Rembrandt lighting', 'Subsurface scattering', 'God rays')",
-  "camera_optics": "Lens choice and depth of field (e.g., '85mm f/1.2', 'Telephoto compression', 'Bokeh')",
-  "color_grading": "The color palette or LUT (e.g., 'Teal and Orange', 'Desaturated Kodachrome', 'Neon Pastel')",
-  "negative_constraints": "Elements to strictly avoid (e.g., 'Blurry', 'Distorted text', 'Low contrast')",
-  "final_prompt_string": " [subject_anchor], [environment_&_atmosphere], [medium_&_style], [lighting_model], [camera_optics], [color_grading] "
-}`,
-        whyItWorks: 'Universal Synthesis: Combines photography, 3D rendering, and art history. Scene State JSON: Forces structured thinking about lighting, optics, and medium. Final Prompt String: Provides a ready-to-use, hierarchically organized prompt.',
-        tags: ['midjourney', 'image-generation', 'art-direction'],
-        tokensUsed: 250,
-        successRate: 98,
-        saves: 2150,
+**The "Visual Layering" Protocol:**
+1. **The Composition:** Start with the camera's position and the framing (e.g., "A low-angle close-up framing...").
+2. **The Subject & Action:** Describe the subject not just by what they are, but by their *texture* and *intent* (e.g., "a weather-beaten samurai, his armor scarred by previous battles...").
+3. **Atmospheric Interaction:** Describe how the environment interacts with the subject (e.g., "Mist clings to the fur of his collar as he stares into the neon-lit abyss").
+4. **Lighting Dynamics:** Describe the *source* and the *impact* of the light (e.g., "A sharp cyan rim light separates him from the darkness, highlighting the razor edge of his blade").
+5. **Cinematic Grading:** Finish with the mood and film stock feel (e.g., "The image has the gritty, desaturated texture of 35mm film with deep crushed blacks and glowing highlights").
+
+**Output Format:**
+A single block of text optimized for semantic understanding. No JSON, no commas, just pure visual narrative.`,
+        whyItWorks: 'Narrative Priming: Uses relational language ("clings to", "bathed in") that modern encoders prioritize over lists. Visual Layering: Forces a logical flow from composition to grading, ensuring high compositional synergy.',
+        tags: ['flux', 'midjourney', 'art-direction', 'narrative'],
+        tokensUsed: 180,
+        successRate: 99,
+        saves: 2420,
     },
     {
         id: 'image-cinematic-002',
