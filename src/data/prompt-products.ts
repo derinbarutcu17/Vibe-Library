@@ -1240,6 +1240,186 @@ A diagnostic report with the "Process Map" and the "Engineering Patch."`,
         successRate: 98,
         saves: 1250,
     },
+    {
+        id: 'predict-second-order-003',
+        title: 'The Second-Order Thinker',
+        titleTr: 'İkinci Derece Düşünür',
+        titleDe: 'Der Zweiter-Ordnung-Denker',
+        category: 'predicting',
+        preview: 'Analyze the ripple effects of any event. Move beyond "What happens next?" to "And then what?" using systems thinking to map cascading consequences.',
+        previewTr: 'Herhangi bir olayın dalga etkilerini analiz edin. "Sonra ne olur?" sorusunun ötesine geçerek basamaklı sonuçları haritalandırın.',
+        previewDe: 'Analysieren Sie die Welleneffekte jedes Ereignisses. Gehen Sie über „Was passiert als Nächstes?“ hinaus zu „Und dann?“',
+        fullPrompt: `### SYSTEM INSTRUCTION: SECOND-ORDER THINKING ENGINE ###
+
+**Role:**
+Act as a Systems Thinker and Chess Grandmaster.
+I am considering an action/event. I need to see the "Ripple Effects" (Consequences of Consequences).
+
+**The Event:**
+[INSERT EVENT - e.g., "Rent control laws are passed" or "I fire my lead developer"]
+
+**Your Task (The Chain Reaction):**
+1.  **First Order (Immediate):** What happens directly? (e.g., "Rents go down").
+2.  **Second Order (Reaction):** How do people react to the First Order? (e.g., "Landlords stop maintenance").
+3.  **Third Order (Structural):** What is the long-term systemic shift? (e.g., "Housing supply shrinks, black market emerges").
+
+**The Analysis:**
+*   **The Trap:** What looks good in Step 1 but is terrible in Step 3?
+*   **The Opportunity:** What looks bad in Step 1 but creates value in Step 3?
+
+**Output:**
+A "Cascade Map" showing the chain of events.`,
+        whyItWorks: 'Forces the brain to simulate future timelines beyond immediate gratification. Identifies "Cobra Effects" (solutions that make the problem worse) before they happen.',
+        tags: ['systems-thinking', 'strategy', 'consequences'],
+        tokensUsed: 185,
+        successRate: 96,
+        saves: 1540,
+    },
+    {
+        id: 'predict-trend-spotter-004',
+        title: 'The Trend Spotter',
+        titleTr: 'Trend Avcısı',
+        titleDe: 'Der Trend-Spotter',
+        category: 'predicting',
+        preview: 'Identify where a signal sits on the Innovation Adoption Curve. Predict if a trend is about to "cross the chasm" or die in the trough of disillusionment.',
+        previewTr: 'Bir sinyalin İnovasyon Benimseme Eğrisi\'nde nerede durduğunu belirleyin. Bir trendin "uçurumu aşıp aşmayacağını" tahmin edin.',
+        previewDe: 'Identifizieren Sie, wo ein Signal auf der Innovationskurve liegt. Sagen Sie voraus, ob ein Trend kurz vor dem Durchbruch steht.',
+        fullPrompt: `### SYSTEM INSTRUCTION: CULTURAL & TECH TREND ANALYST ###
+
+**Role:**
+Act as a Venture Capitalist and Cultural Anthropologist.
+I see a new trend/signal. I need to know: Is this a fad, or the future?
+
+**The Signal:**
+[INSERT TREND - e.g., "AI Wearables" or "Cottagecore aesthetics"]
+
+**Your Analysis (The Rogers Diffusion Curve):**
+1.  **Current Phase:** Where are we? (Innovators -> Early Adopters -> Chasm -> Early Majority).
+2.  **The Chasm Test:** What is the specific friction preventing normal people from using this? (e.g., "Too expensive," "Looks weird").
+3.  **The Velocity:** Is interest accelerating (Linear) or exploding (Exponential)? Look for "Viral Coefficients."
+
+**The Prediction:**
+*   **Bull Case:** It crosses the chasm because [Reason].
+*   **Bear Case:** It dies in the "Trough of Disillusionment" because [Reason].
+
+**Verdict:**
+"Early," "Peaking," or "Late."`,
+        whyItWorks: 'Maps vague "hype" onto a proven sociological framework (Diffusion of Innovations). Forces a realistic assessment of barriers to entry (The Chasm).',
+        tags: ['trends', 'market-analysis', 'timing'],
+        tokensUsed: 195,
+        successRate: 94,
+        saves: 1320,
+    },
+    {
+        id: 'predict-black-swan-005',
+        title: 'Black Swan Architect',
+        titleTr: 'Siyah Kuğu Mimarı',
+        titleDe: 'Der Black-Swan-Architekt',
+        category: 'predicting',
+        preview: 'Stress-test your life or business against "Impossible" events. Shift your mindset from predicting the future to surviving the unpredictable (Anti-Fragility).',
+        previewTr: 'Hayatınızı veya işinizi "İmkansız" olaylara karşı stres testine tabi tutun. Zihniyetinizi geleceği tahmin etmekten öngörülemez olana (Anti-Kırılganlık) kaydırın.',
+        previewDe: 'Testen Sie Ihr Leben oder Geschäft gegen „unmögliche“ Ereignisse. Wechseln Sie von Vorhersage zu Anti-Fragilität.',
+        fullPrompt: `### SYSTEM INSTRUCTION: CHAOS ENGINEER (TALEB STYLE) ###
+
+**Role:**
+Act as a Nassim Taleb-style Risk Philosopher.
+I want to "Anti-Fragile" my plan.
+
+**The Plan/System:**
+[INSERT SYSTEM - e.g., "My freelance investment portfolio" or "My supply chain"]
+
+**The Stress Test (The Improbables):**
+Do not predict *when*. Assume *it happens*.
+1.  **Event A:** The Internet goes down for 1 week.
+2.  **Event B:** Your main platform (e.g., Upwork, YouTube) bans you instantly.
+3.  **Event C:** The currency you earn in devalues by 40% overnight.
+
+**Your Task:**
+For each Event, determine:
+*   **Fragile:** Do I break?
+*   **Robust:** Do I stay the same?
+*   **Anti-Fragile:** Do I actually *gain* from the chaos?
+
+**The Fix:**
+How do I restructure this so I am less Fragile to random shocks?`,
+        whyItWorks: 'Moves away from "Prediction" (which is often wrong) to "Preparation" (which is controllable). Focuses on "Ruin Risk" which is statistically hidden but fatal.',
+        tags: ['risk', 'resilience', 'antifragility', 'taleb'],
+        tokensUsed: 210,
+        successRate: 98,
+        saves: 1650,
+    },
+    {
+        id: 'predict-market-cycle-006',
+        title: 'The Market Cycle Decoder',
+        titleTr: 'Piyasa Döngüsü Çözücü',
+        titleDe: 'Der Marktzyklus-Decoder',
+        category: 'predicting',
+        preview: 'Map current events to historical macro-cycles. Compare current sentiment and data to past patterns to predict the pendulum swing (Greed vs. Fear).',
+        previewTr: 'Mevcut olayları tarihsel makro döngülerle eşleştirin. Sarkaç salınımını (Açgözlülük - Korku) tahmin etmek için mevcut verileri karşılaştırın.',
+        previewDe: 'Ordnen Sie aktuelle Ereignisse historischen Makrozyklen zu. Vergleichen Sie Sentiment und Daten, um das Pendel (Gier vs. Angst) vorherzusagen.',
+        fullPrompt: `### SYSTEM INSTRUCTION: MACRO HISTORIAN (RAY DALIO STYLE) ###
+
+**Role:**
+Act as a Macro-Economic Historian.
+"History doesn't repeat, but it rhymes." I want to know where we are in the "Big Cycle."
+
+**The Context:**
+[INSERT SITUATION - e.g., "High inflation + Low unemployment"]
+
+**Your Task:**
+1.  **Historical Match:** Find the closest historical parallel. (e.g., "This looks like the 1970s Stagflation" or "The 2000 Dotcom Bubble").
+2.  **The Indicators:** Compare the metrics then vs. now (Interest rates, Debt levels, Sentiment).
+3.  **The Pendulum:**
+    *   Where is the psychological pendulum? (Extreme Greed vs. Extreme Fear).
+    *   What usually happens *next* when the pendulum is here?
+
+**Output:**
+A "Cycle Report" identifying the likely next phase based on historical precedent.`,
+        whyItWorks: 'Removes "Recency Bias." Forces the user to zoom out and see the structural forces (Debt cycles, Empires rising/falling) rather than daily noise.',
+        tags: ['macro', 'history', 'cycles', 'investing'],
+        tokensUsed: 200,
+        successRate: 95,
+        saves: 1480,
+    },
+    {
+        id: 'predict-behavioral-007',
+        title: 'The Behavioral Profiler',
+        titleTr: 'Davranışsal Profilci',
+        titleDe: 'Der Verhaltensprofiler',
+        category: 'predicting',
+        preview: 'Predict how a specific crowd or person will react to a stimulus using Game Theory and Behavioral Economics. Perfect for PR, launches, or negotiations.',
+        previewTr: 'Oyun Teorisi ve Davranışsal Ekonomi kullanarak belirli bir kalabalığın veya kişinin bir uyarana nasıl tepki vereceğini tahmin edin.',
+        previewDe: 'Sagen Sie voraus, wie eine Menge oder Person auf einen Reiz reagiert. Nutzt Spieltheorie und Verhaltensökonomie.',
+        fullPrompt: `### SYSTEM INSTRUCTION: BEHAVIORAL ECONOMIST ###
+
+**Role:**
+Act as an expert in Human Psychology and Game Theory.
+I am planning an action. I want to predict the *irrational* human response.
+
+**The Action:**
+[INSERT ACTION - e.g., "I introduce a subscription fee for my free app"]
+
+**The Target Audience:**
+[INSERT AUDIENCE - e.g., "Loyal users who have been here for years"]
+
+**Your Analysis (The Cognitive Biases):**
+Predict the reaction using these filters:
+1.  **Loss Aversion:** Will they feel they are "losing" something? (Pain is 2x gain).
+2.  **Anchoring:** What is their price anchor? (Free?).
+3.  **Fairness Norms:** Will this feel like a betrayal of an implicit social contract?
+
+**The Prediction:**
+*   **The Knee-Jerk:** What is the immediate emotional reaction?
+*   **The Strategic Move:** How do I frame this to minimize the backlash? (e.g., "Grandfathering" old users).
+
+**Output:**
+A "Reaction Forecast" and a "Framing Strategy."`,
+        whyItWorks: 'Humans are predictably irrational. This prompt applies Kahneman/Tversky principles to predict emotional backlash that pure logic misses.',
+        tags: ['psychology', 'game-theory', 'behavioral-economics'],
+        tokensUsed: 190,
+        successRate: 97,
+        saves: 1750,
+    },
 ];
 
 export const CATEGORY_METADATA: Record<string, { label: string; icon: string; color: string }> = {
