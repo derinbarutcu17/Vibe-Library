@@ -24,30 +24,35 @@ export const promptProducts: PromptProduct[] = [
         titleTr: 'Kök Neden Araştırmacısı',
         titleDe: 'Ursachen-Ermittler',
         category: 'coding',
-        preview: 'Identify difficult bugs by brainstorming 5 distinct root causes with confidence scores. Includes specific investigation steps for each hypothesis.',
-        previewTr: 'Güven puanları ile 5 farklı kök neden üzerinde beyin fırtınası yaparak zor hataları tanımlayın. Her hipotez için özel araştırma adımları içerir.',
-        previewDe: 'Identifizieren Sie hartnäckige Bugs durch Brainstorming von 5 Ursachen mit Vertrauenswerten. Inklusive Untersuchungsschritte für jede Hypothese.',
-        fullPrompt: `Act as a Principal Software Engineer and Systems Detective. I am facing a complex issue in my codebase and I need a deep root cause analysis.
+        preview: 'Identify complex bugs by mapping the data flow from input to point of failure. Brainstorm 5 root causes with confidence scores and specific investigation steps.',
+        previewTr: 'Girdiden hata noktasına kadar veri akışını haritalandırarak karmaşık hataları tanımlayın. Güven puanları ve araştırma adımları ile 5 kök neden belirleyin.',
+        previewDe: 'Identifizieren Sie komplexe Bugs durch Datenfluss-Mapping. Brainstorming von 5 Ursachen mit Vertrauenswerten und Untersuchungsschritten.',
+        fullPrompt: `### INTERNAL REASONING (THINK SILENTLY) ###
+1. Trace the data flow journey from initial input to the reported error.
+2. Identify dependencies that could cause silent failures.
 
-**The Symptom/Bug:**
-[INSERT SYMPTOM HERE - e.g., "Login page times out only on mobile devices"]
+### SYSTEM INSTRUCTION: SYSTEMS DETECTIVE ###
+Act as a Principal Software Engineer and Systems Detective. 
 
-**Relevant Code Snippets/Context:**
-[INSERT RELEVANT CODE OR ERROR LOGS HERE]
+**The Symptom:**
+[INSERT SYMPTOM HERE]
 
-**Task:**
-1. Analyze the provided context and "read between the lines" of the code.
-2. Brainstorm the **Top 5 Potential Causes** for this issue (consider race conditions, dependency conflicts, environment variables, logic errors, etc.).
-3. Assign a **Confidence Score (0-100%)** to each hypothesis based on the evidence.
-4. For each cause, provide a specific **"Investigation Step"** (how I can verify if this is the cause) and a **"Fix Strategy"**.
+**The Context:**
+[INSERT CODE OR LOGS HERE]
 
-Output format:
-Please present the 5 causes in a Markdown table, followed by a detailed explanation for the #1 most likely cause.`,
-        whyItWorks: 'Probabilistic Thinking: Confidence Scores force expert weighing of evidence. Divergent Thinking: Demanding "5 causes" breaks pattern-matching to obvious answers. Action-Oriented: Investigation Steps ensure a verifyable plan, not just theory.',
+**Task Protocol:**
+1. **Architectural Trace:** Map out the journey of the data. Where could it be corrupted or dropped?
+2. **Hypothesis Generation:** Brainstorm the **Top 5 Potential Causes** (Race conditions, environmental drift, memory leaks, etc.).
+3. **Evidence Ranking:** Assign a **Confidence Score (0-100%)** to each cause.
+4. **The Probe:** For the #1 cause, provide a specific **CLI command or log insertion point** to verify the theory.
+
+**Output:**
+A "Data Flow Map" in Markdown, followed by the Evidence Table.`,
+        whyItWorks: 'Architectural Trace: Forcing the model to trace the data flow prevents "lucky guessing" and ensures deep infrastructure analysis. Evidence Ranking: Quantifies probability.',
         tags: ['debugging', 'root-cause', 'analysis'],
-        tokensUsed: 150,
-        successRate: 98,
-        saves: 4521,
+        tokensUsed: 175,
+        successRate: 99,
+        saves: 4850,
     },
     {
         id: 'coding-architect-002',
@@ -55,28 +60,34 @@ Please present the 5 causes in a Markdown table, followed by a detailed explanat
         titleTr: 'Kod Temizleyici',
         titleDe: 'Der Code-Reiniger',
         category: 'coding',
-        preview: 'Refactor working but messy code into production-grade software using SOLID principles, strict typing, and Big O optimization.',
-        previewTr: 'Çalışan ancak karmaşık kodları SOLID prensipleri, katı tipleme ve Big O optimizasyonu kullanarak profesyonel seviyeye dönüştürün.',
-        previewDe: 'Refactoren Sie funktionierenden, aber unordentlichen Code mithilfe von SOLID-Prinzipien, strenger Typisierung und Big-O-Optimierung.',
-        fullPrompt: `Act as a Senior Software Architect with 15+ years of experience in [INSERT LANGUAGE, e.g., Python/TypeScript].
+        preview: 'Refactor messy code into production-grade software. Uses a test-driven approach to ensure logic remains intact while applying SOLID and strict typing.',
+        previewTr: 'Karmaşık kodları profesyonel yazılıma dönüştürün. SOLID ve katı tipleme uygularken mantığın bozulmamasını sağlamak için test odaklı bir yaklaşım kullanır.',
+        previewDe: 'Refactoren Sie unordentlichen Code mithilfe von SOLID-Prinzipien und strenger Typisierung. Nutzt einen testgetriebenen Ansatz zur Qualitätssicherung.',
+        fullPrompt: `### INTERNAL REASONING (THINK SILENTLY) ###
+1. Analyze the existing code for hidden logic and edge cases.
+2. Outline the SOLID violations and optimization opportunities.
 
-I have a piece of code that functions but needs refactoring for scalability, readability, and performance.
+### SYSTEM INSTRUCTION: SENIOR SOFTWARE ARCHITECT ###
+Act as a Senior Software Architect with 15+ years of experience. Your goal is a high-fidelity refactor.
 
-My Code:
+**My Code:**
 [INSERT CODE HERE]
 
-Please refactor this code applying the following standards:
-1. **SOLID Principles:** Ensure classes/functions have single responsibilities.
-2. **Type Safety:** Add strict typing where applicable.
-3. **Error Handling:** Replace generic errors with specific try/catch blocks.
-4. **Optimization:** Reduce time complexity (Big O) where possible.
+**Refactor Protocol:**
+1. **Verification Phase:** Before refactoring, generate 3-5 unit tests (using the standard library for the language) that describe the *current* expected behavior of this code.
+2. **SOLID Refactor:** Rewrite the code ensuring single responsibility and interface segregation.
+3. **Type Safety:** Inject strict typing and handle all null/undefined edge cases.
+4. **Optimization:** Reduce Big O complexity where possible.
 
-Output the refactored code first, followed by a bulleted list of exactly what you changed and why.`,
-        whyItWorks: 'Assigning the "Senior Architect" persona activates higher-level reasoning. Explicit constraints (SOLID, Big O) push the model beyond simple syntax cleanup into actual engineering work.',
-        tags: ['refactoring', 'clean-code', 'optimization'],
-        tokensUsed: 110,
-        successRate: 95,
-        saves: 3820,
+**Output:**
+1. The **Unit Tests** for the original logic.
+2. The **Refactored Code**.
+3. A breakdown of exactly why the new version is more stable.`,
+        whyItWorks: 'Test-Driven Refactor: Generating tests before rewriting code prevents logic regressions. Internal Reasoning: Forces the AI to identify violations before attempting to fix them.',
+        tags: ['refactoring', 'clean-code', 'test-driven'],
+        tokensUsed: 145,
+        successRate: 98,
+        saves: 4250,
     },
     {
         id: 'coding-spec-003',
@@ -110,25 +121,31 @@ Write this specifically for an AI Agent to read and execute without confusion.`,
         titleTr: 'Güvenli Güncelleme',
         titleDe: 'Das sichere Update',
         category: 'coding',
-        preview: 'Request code changes while prioritizing stability. Analyzes file dependencies and potential impacts before making any modifications.',
-        previewTr: 'Kararlılığı önceliklendirerek kod değişiklikleri talep edin. Herhangi bir değişiklik yapmadan önce dosya bağımlılıklarını ve olası etkileri analiz eder.',
-        previewDe: 'Fordern Sie Code-Änderungen an, während die Stabilität Vorrang hat. Analysiert Abhängigkeiten und Auswirkungen vor jeder Änderung.',
-        fullPrompt: `I need to make a change to the codebase, but you must prioritize STABILITY. Do not break existing functionality.
+        preview: 'Request code changes while prioritizing stability. Includes impact analysis of file dependencies and a mandatory emergency rollback strategy.',
+        previewTr: 'Kararlılığı önceliklendirerek kod değişiklikleri yapın. Dosya bağımlılıklarının etki analizini ve acil geri alma stratejisini içerir.',
+        previewDe: 'Code-Änderungen mit Fokus auf Stabilität. Beinhaltet Abhängigkeitsanalyse und eine verbindliche Rollback-Strategie.',
+        fullPrompt: `### INTERNAL REASONING (THINK SILENTLY) ###
+1. Map out all potential points of failure for the requested change.
+2. Identify cross-file dependencies that could be affected.
 
-The Request: "[INSERT REQUEST - e.g., Move the signup button to the left]"
+### SYSTEM INSTRUCTION: STABILITY ENGINEER ###
+I need a code change, but **STABILITY** is the primary constraint. 
 
-Before writing any code, perform a "Impact Analysis":
-1. **Identify Files:** List which files you need to touch.
-2. **Check Dependencies:** List what *other* parts of the app rely on these files (e.g., specific CSS classes or functions).
-3. **The Plan:** Explain how you will apply the change *without* affecting those dependencies.
-4. **Verification:** Add a check to ensure the rest of the app still loads correctly.
+**The Request:** 
+[INSERT REQUEST HERE]
 
-Execute only after you have confirmed the plan is safe.`,
-        whyItWorks: 'Forcing the AI to analyze impact before coding prevents the "break everything to fix one thing" problem. The verification step catches regressions before they happen.',
-        tags: ['stability', 'safe-updates', 'impact-analysis'],
-        tokensUsed: 105,
-        successRate: 97,
-        saves: 3654,
+**Protocol:**
+1. **Impact Analysis:** List every file and function that will be touched or indirectly affected.
+2. **Implementation:** Rewrite the logic ensuring zero regression.
+3. **Emergency Rollback:** Provide a set of clear steps (CLI or manual) to instantly revert this change if production health drops.
+4. **Verification:** Add a specific test case to run after implementation.
+
+Execute only if the Impact Analysis shows no critical risks.`,
+        whyItWorks: 'Emergency Rollback: Ensuring an exit plan reduces deployment anxiety. Impact Analysis: Forces the AI to "look before it leaps" across the file structure.',
+        tags: ['stability', 'safe-updates', 'rollback'],
+        tokensUsed: 125,
+        successRate: 98,
+        saves: 4120,
     },
 
     {
@@ -137,31 +154,30 @@ Execute only after you have confirmed the plan is safe.`,
         titleTr: 'Prompt Optimize Edici',
         titleDe: 'Der Prompt-Optimierer',
         category: 'general',
-        preview: 'Transform raw ideas into expert-level prompts using System 2 reasoning, CoT, and persona adoption. Outputs the optimized prompt plus an explanation.',
-        previewTr: 'Ham fikirleri Sistem 2 akıl yürütme, CoT ve persona kullanımıyla uzman düzeyinde promptlara dönüştürün. Optimize edilmiş prompt ve açıklama sunar.',
-        previewDe: 'Verwandeln Sie rohe Ideen in Experten-Prompts mithilfe von System-2-Denken, CoT und Personas. Liefert den optimierten Prompt plus Erklärung.',
-        fullPrompt: `Act as a Master Prompt Engineer and AI Logic Specialist. Your goal is to take raw, often vague user prompts and transform them into "Gold Standard" prompts optimized for Large Language Models (LLMs).
+        preview: 'Transform raw ideas into gold-standard prompts using CoT, persona adoption, and negative constraint injection to prevent robotic cliches.',
+        previewTr: 'Ham fikirleri CoT, persona ve robotik klişeleri önlemek için negatif kısıtlama enjeksiyonu kullanarak altın standartta promptlara dönüştürün.',
+        previewDe: 'Verwandeln Sie rohe Ideen in Gold-Standard-Prompts mithilfe von CoT und negativen Constraints zur Vermeidung von KI-Floskeln.',
+        fullPrompt: `### SYSTEM INSTRUCTION: MASTER PROMPT ENGINEER ###
+Transform raw ideas into expert-level prompts optimized for 2026 reasoning models.
 
-My Goal/Raw Prompt: [INSERT YOUR GOAL/ROUGH IDEA HERE]
-Target Audience: [INSERT AUDIENCE, e.g., Beginner Coders, CEOs]
+**Raw Goal:** [INSERT GOAL]
+**Target Audience:** [INSERT AUDIENCE]
 
-**Analyze and Optimize:**
-Analyze my raw prompt for weaknesses (vague intent, lack of constraints, potential for hallucination). Apply the following advanced techniques:
-1. **Persona Adoption:** Assign a specific, expert role relevant to the task.
-2. **Chain-of-Thought (CoT):** Add instructions to "think step-by-step" or outline the logic before answering.
-3. **System 2 Attention:** Rewrite the core request to strip bias and irrelevant noise.
-4. **Few-Shot Templating:** If the task involves a pattern, insert placeholders for examples (e.g., "[Insert Example 1 here]").
-5. **Chain-of-Verification:** Add a final step asking the model to verify its own output before finalizing.
-6. **Delimiters & Formatting:** Use clear markdown structures to separate instructions from data.
+**Optimization Protocol:**
+1. **Internal Reasoning Scratchpad:** Add instructions for the model to "think silently" before answering.
+2. **Negative Constraints (Banned List):** Identify 5 robotic words or behaviors (e.g., "Delve," "In today's fast-paced world," preamble fluff) to strictly avoid.
+3. **Chain-of-Thought:** Outline the logical steps the AI must follow.
+4. **Few-Shot Examples:** If applicable, create a [Placeholder] for examples to guide the model.
 
-**Output two distinct sections:**
-SECTION 1: The Improved Prompt - A ready-to-copy, highly optimized version in a code block.
-SECTION 2: The "Under the Hood" Explanation - Bullet points explaining exactly which techniques you applied and why.`,
-        whyItWorks: 'System 2 Attention forces deliberate thinking. Dual-output educates users on improvements. Layers multiple safety nets (CoT, Verification, Formatting) to prevent hallucinations.',
-        tags: ['meta-prompting', 'system-2', 'optimization'],
-        tokensUsed: 210,
-        successRate: 97,
-        saves: 9755,
+**Output:**
+1. The **Optimized Prompt** (Code block).
+2. The **Banned List** for this specific task.
+3. A brief explanation of the logic improvements.`,
+        whyItWorks: 'Negative Constraint Injection: By explicitly banning low-quality "AI-isms," the resulting prompt forces the model to find more creative and human-sounding paths.',
+        tags: ['meta-prompting', 'optimization', 'logic-injection'],
+        tokensUsed: 220,
+        successRate: 98,
+        saves: 10250,
     },
     {
         id: 'logic-injector-001',
