@@ -20,6 +20,10 @@ import { useTranslation } from '@/i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const GLOW_STATE_COLUMNS = 5;
+const GLOW_STATE_ROWS = 4;
+const TOTAL_GLOW_STATES = GLOW_STATE_COLUMNS * GLOW_STATE_ROWS;
+
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -192,6 +196,16 @@ export default function Home() {
     { id: 'creativity' },
   ];
 
+  const mouseNormX = (mousePos.x + 1) / 2;
+  const mouseNormY = (mousePos.y + 1) / 2;
+  const glowColumn = Math.min(GLOW_STATE_COLUMNS - 1, Math.max(0, Math.floor(mouseNormX * GLOW_STATE_COLUMNS)));
+  const glowRow = Math.min(GLOW_STATE_ROWS - 1, Math.max(0, Math.floor(mouseNormY * GLOW_STATE_ROWS)));
+  const glowState = Math.min(TOTAL_GLOW_STATES - 1, glowRow * GLOW_STATE_COLUMNS + glowColumn);
+  const ctaGlowStyle = {
+    '--cta-glow-x': `${(mouseNormX * 100).toFixed(2)}%`,
+    '--cta-glow-y': `${(mouseNormY * 100).toFixed(2)}%`,
+  } as React.CSSProperties;
+
   return (
     <>
       <nav ref={stickyNavRef} className={styles.stickyNav}>
@@ -209,7 +223,12 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <button className={styles.stickyCta} onClick={handleCraftPrompt}>
+          <button
+            className={styles.stickyCta}
+            data-glow-state={glowState}
+            style={ctaGlowStyle}
+            onClick={handleCraftPrompt}
+          >
             {t('hero.ctaPrimary')}
           </button>
         </div>
@@ -308,7 +327,12 @@ export default function Home() {
                 </p>
 
                 <div className={styles.ctaButtons} ref={ctaRef}>
-                  <button className={styles.primaryCta} onClick={handleCraftPrompt}>
+                  <button
+                    className={styles.primaryCta}
+                    data-glow-state={glowState}
+                    style={ctaGlowStyle}
+                    onClick={handleCraftPrompt}
+                  >
                     {t('hero.ctaPrimary')}
                     <span className={styles.ctaArrow}>→</span>
                   </button>
